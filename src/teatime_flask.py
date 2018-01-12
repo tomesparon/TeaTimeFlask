@@ -9,8 +9,19 @@ app = Flask(__name__)
 def mainpage():
     if request.method == 'POST':
         #press button via gpio
-        from subprocess import call
-        call(["python", "piservo.py"])
+        from subprocess import Popen,PIPE,STDOUT
+        Popen(["python", "piservo.py"],stdout=PIPE)
+        #say message
+        try:
+            from subprocess import DEVNULL
+        except ImportError:
+            import os
+            DEVNULL = open(os.devnull, 'wb')
+
+        text = "Your kettle is on"
+        p = Popen(['espeak', '-b', '1'], stdin=PIPE, stdout=DEVNULL, stderr=STDOUT)
+        p.communicate(text)
+
         return render_template('boiling.html')
         
     else:

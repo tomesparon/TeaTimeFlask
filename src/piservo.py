@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import RPi.GPIO as GPIO
 from time import sleep
-from subprocess import call
+#from subprocess import Popen,PIPE,STDOUT
 
 
 
@@ -27,7 +27,6 @@ SetAngle(22)
 sleep(0.2)
 SetAngle(100)
 pwm.stop()
-print("DONE")
-speech="Your kettle is ON"
-call(["espeak",speech, "&> /dev/null"])
+print("DONE PRESSING")
+
 GPIO.cleanup()
