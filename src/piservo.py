@@ -3,12 +3,7 @@ import RPi.GPIO as GPIO
 from time import sleep
 from subprocess import call
 
-GPIO.setmode(GPIO.BOARD)
-GPIO.setup(11, GPIO.OUT)
 
-pwm=GPIO.PWM(11, 50)
-
-pwm.start(0)
 
 def SetAngle(angle):
     duty = angle / 18 + 2
@@ -20,7 +15,10 @@ def SetAngle(angle):
     
     
 
-
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(11, GPIO.OUT)
+pwm=GPIO.PWM(11, 50)
+pwm.start(0)
 
 sleep(3)
 SetAngle(100)
