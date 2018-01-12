@@ -29,5 +29,5 @@ SetAngle(100)
 pwm.stop()
 print("DONE")
 speech="Your kettle is ON"
-call(["espeak",speech])
+call(["espeak",speech + " &> /dev/null"])
 GPIO.cleanup()
