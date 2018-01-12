@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import RPi.GPIO as GPIO
 from time import sleep
 from subprocess import call
