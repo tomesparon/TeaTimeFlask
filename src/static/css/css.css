@@ -1,13 +1,13 @@
 body {
-    background-color: af9483;
-	color: ffffff;
+    background-color: #af9483;
+	color: #ffffff;
 	text-align: center;
 }
 h1{
 	font-size: 72px;
 }
 .button {
-    background-color: ad5d5d;
+    background-color: #ad5d5d;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -17,7 +17,7 @@ h1{
     font-size: 48px;
 }
 .button:hover {
-	background-color: bb7777;
+	background-color: #bb7777;
 }
 
 .cont{
@@ -26,3 +26,32 @@ h1{
 	transform: translateY(-50%);
 	text-align: center;
 }
+
+.login {
+  background: #ad5d5d;
+  height: 100px;
+  margin: 20px auto 0;
+  width: 300px;
+}
+
+.login:hover {
+    background-color: #bb7777;
+}
+
+
+input[id="name"] {
+  border: 1px solid #ad5d5d;
+  box-sizing: border-box;
+  height: 50px;
+  margin: 25px;
+  padding-left: 40px;
+  width: 240px;
+  font-size: 20px;
+  background-color : #af9483;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: white;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: white;

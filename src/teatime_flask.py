@@ -34,23 +34,3 @@ def mainpage():
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8000, debug=True)
-
-
-    # if request.method == 'POST':
-    #     #press button via gpio
-    #     from subprocess import Popen,PIPE,STDOUT
-    #     # Popen(["python", "piservo.py"],stdout=PIPE)
-    #     # #say message
-    #     # try:
-    #     #     from subprocess import DEVNULL
-    #     # except ImportError:
-    #     #     import os
-    #     #     DEVNULL = open(os.devnull, 'wb')
-
-    #     # text = "Your kettle is on"
-    #     # p = Popen(['espeak', '-b', '1'], stdin=PIPE, stdout=DEVNULL, stderr=STDOUT)
-    #     # p.communicate(text)
-
-    #     return render_template('boiling.html')
-        
-    # else:

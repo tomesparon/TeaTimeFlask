@@ -8,21 +8,15 @@
             <body>
                 <div class="cont">
                     {% block content %}
-                    <h1>Remote Kettle 0.1-alpha</h1>
-                    <!--
-                    <form method="POST" action="/">
-                        <input name="hiddenfield" type="hidden" value='somevalue' />
-                        <input class="button" type="submit" value="Turn the kettle on!"/>
-                    </form>
-                -->
-                    <form action="/" method="POST">
-                        {{ form.hidden_tag() }}
-                        <p>
-                            {{ form.name.label }}<br>
-                            {{ form.name(size=32) }}
-                        </p>
-                        <p>{{ form.submit(class_="button",value="Turn the kettle on!") }}</p>
-                    </form>
+                        <h1>Remote Kettle 0.2-alpha</h1>
+                        <form action="/" method="POST">
+                            {{ form.hidden_tag() }}
+                            <div class="login">
+                                {{ form.name(placeholder="Enter your name!") }}
+                            </div>
+                            </br>
+                            {{ form.submit(class_="button",value="Turn the kettle on!") }}
+                        </form>
                     {% endblock%}
                 </div>
             </body>
