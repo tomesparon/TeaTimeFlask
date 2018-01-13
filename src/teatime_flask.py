@@ -45,7 +45,7 @@ def lookup_alarms():
     return [str(job) for job in cron if job.is_enabled()]
 
 def lookup_sounds():
-    return  [x.split(".")[0] for x in os.listdir('/home/pi/alarm/sounds')]
+    return  [x.split(".")[0] for x in os.listdir('/home/pi/projects/django-rpi/TeaTimeFlask/src/alarm/sounds')]
 
 @app.route("/schedule")
 def hello():
@@ -77,7 +77,7 @@ def running_alarms():
     gets list of running alarms
     :return: returns list of running alarms
     """
-    return json.dumps(os.listdir('/home/pi/alarm/alarms'))
+    return json.dumps(os.listdir('/home/pi/projects/django-rpi/TeaTimeFlask/src/alarm/alarms'))
 
 @app.route("/set_alarm/<newalarm>")
 def set_alarm(newalarm):
@@ -116,7 +116,7 @@ def set_alarm(newalarm):
     for day in day_string:
 
         cron = CronTab(user="pi")
-        job = cron.new(command='/home/pi/alarm/alarm.py {0}'.format(sound))
+        job = cron.new(command='/home/pi/projects/django-rpi/TeaTimeFlask/src/alarm/alarm.py {0}'.format(sound))
         job.dow.on(day)
 
         #determine hours
