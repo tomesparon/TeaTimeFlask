@@ -6,9 +6,12 @@ import sys
 import signal
 import json
 
-from flask import Flask, render_template, request, Response, redirect
+from flask import Flask, render_template, request, Response, redirect, make_response
 from config import Config
 from forms import LoginForm
+
+import temperature
+from time import time
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -31,10 +34,26 @@ def mainpage():
         text = "Your kettle is On, MR " + text
         p = Popen(['espeak', '-b', '1'], stdin=PIPE, stdout=DEVNULL, stderr=STDOUT)
         p.communicate(text)
-        return render_template('boiling.html')
+        return render_template('temperature.html')
 
     #default
     return render_template('main_template.html',form=form)
+
+## temperature views
+
+@app.route('/temperature')
+def hello_world():
+    return render_template('temperature.html', data='test')
+
+## called by js highcharts every 8sec
+@app.route('/live-data')
+def live_data():
+    temp = temperature.read_temp()
+    # Create a PHP?? array and echo it as JSON
+    data = [time() * 1000, temp]
+    response = make_response(json.dumps(data))
+    response.content_type = 'application/json'
+    return response
 
 
 ## alarm view routes start
@@ -58,7 +77,7 @@ def hello():
     sounds = lookup_sounds()
     scheduled = [ x.split() for x in lookup_alarms()]
     data = {"sounds":sounds, "scheduled":scheduled}
-    return render_template("index.html", **data)
+    return render_template("scheduler.html", **data)
 
 @app.route("/remove_alarms")
 def remove_alarms():
