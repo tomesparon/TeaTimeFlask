@@ -2,6 +2,8 @@
     <head>
         <title>Alarm</title>
 	<link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet" media="screen">
+	<link rel="shortcut icon"
+                href="{{ url_for('static', filename='images/favicon.ico') }}">
     </head>
     <body>
 	<nav class="navbar navbar-default" role="navigation">
@@ -10,9 +12,11 @@
 		</div>
 	</nav>
 	<ul class="nav nav-tabs" role="tablist">
-		<li class="active"><a href="#active" role="tab" data-toggle="tab">Active Alarms</a></li>
-		<li><a href="#current" role="tab" data-toggle="tab">Current Alarms</a></li>
 		<li><a href="#new-alarms" role="tab" data-toggle="tab">New Alarm</a></li>
+		<li><a href="#current" role="tab" data-toggle="tab">Current Alarms</a></li>
+		<li class="active"><a href="#active" role="tab" data-toggle="tab">Active Alarms</a></li>
+		
+		
 	</ul> 
 	<div class="tab-content">
 		<div class="running tab-pane active" id="active">

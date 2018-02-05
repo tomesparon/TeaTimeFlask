@@ -49,8 +49,14 @@ def hello_world():
 @app.route('/live-data')
 def live_data():
     temp = temperature.read_temp()
+    #print temp
+    # corrections
+    rawboiling = 61.0
+    rawambient = 20.0
+    scalef = ((100.0 - rawambient)/(rawboiling - rawambient))
+    ctemp = (scalef * (temp - rawambient)) + rawambient
     # Create a PHP?? array and echo it as JSON
-    data = [time() * 1000, temp]
+    data = [time() * 1000, ctemp]
     response = make_response(json.dumps(data))
     response.content_type = 'application/json'
     return response
@@ -66,7 +72,7 @@ def lookup_alarms():
 def lookup_sounds():
     return  [x.split(".")[0] for x in os.listdir('/home/pi/projects/django-rpi/TeaTimeFlask/src/alarm/sounds')]
 
-@app.route("/schedule")
+@app.route("/scheduler")
 def hello():
     """
     entry point
