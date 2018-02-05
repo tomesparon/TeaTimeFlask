@@ -1,0 +1,5 @@
+./ffmpeg -f v4l2 -r 10 -i /dev/video0 -c:v libx264 -pix_fmt yuv420p -preset ultrafast -g 20 -b:v 2500k -bufsize 512k -f flv rtmp://a.rtmp.youtube.com/live2/YOUTUBEKEY HERE &> stream.log
+
+rtmp://live.twitch.tv/app/
+
+./ffmpeg -f v4l2 -r 10 -i /dev/video0 -c:v libx264 -pix_fmt yuv420p -preset ultrafast -g 20 -b:v 2500k -bufsize 512k -f flv rtmp://live.twitch.tv/app/INSERTTWITCHKEYHERE &> stream.log

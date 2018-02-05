@@ -1,0 +1,18 @@
+{
+  "FAUXMO": {
+    "ip_address": "auto"
+  },
+  "PLUGINS": {
+    "CommandLinePlugin": {
+      "DEVICES": [
+        {
+            "name": "The Kettle",
+            "port": 49917,
+            "on_cmd": "python piservoalexa.py",
+            "off_cmd": "touch testfile.txt",
+            "state_cmd": "ls testfile.txt"
+        }
+      ]
+    }
+  }
+}
